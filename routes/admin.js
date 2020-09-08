@@ -26,14 +26,13 @@ const  db  = require('../models/product_db');
         imgUrl: req.body.imgUrl,
        
       });
-
   
       let addDatatoStockResult = await addDatatoStock.save();
       if(addDatatoStockResult.length===0)
          return res.status(400).json({message:"please try again,'Data not inserted'"});
 
 
-        return res.status(201).json({result:addDatatoStockResult});
+        return res.status(200).json({result:addDatatoStockResult});
 
 
      }
@@ -41,7 +40,11 @@ const  db  = require('../models/product_db');
     } catch (e) {
       return res.status(500).send(e.message);
     }
-  });     
+  });   
+  
+  
+ 
 
 
+  
   module.exports = router;
