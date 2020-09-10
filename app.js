@@ -5,6 +5,7 @@ const home = require("./routes/home");
 const admin = require("./routes/admin");
 const order = require("./routes/order");
 const search = require("./routes/search");
+const users = require("./routes/users");
 
 const app = express();
 const PORT = 5000;
@@ -16,6 +17,7 @@ app.use("/", home);
 app.use("/admin", admin);
 app.use("/order", order);
 app.use("/search", search);
+app.use("/users", users);
 mongoose
   .connect("mongodb://localhost/geniusmobiledb", {
     useNewUrlParser: true,
