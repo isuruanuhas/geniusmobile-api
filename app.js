@@ -1,9 +1,10 @@
-
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const home = require("./routes/home");
 const admin = require("./routes/admin");
+const order = require("./routes/order");
+const search = require("./routes/search");
 
 const app = express();
 const PORT = 5000;
@@ -13,14 +14,18 @@ app.use(express.json());
 
 app.use("/", home);
 app.use("/admin", admin);
-
+app.use("/order", order);
+app.use("/search", search);
 mongoose
-  .connect("mongodb://localhost/geniusmobiledb", { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect("mongodb://localhost/geniusmobiledb", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => console.log("Connected to Db successfully ... "))
-  .catch(err => console.log("Ërror has occured while connecting to db : ", err));
-
-  
+  .catch((err) =>
+    console.log("Ërror has occured while connecting to db : ", err)
+  );
 
 app.listen(PORT, function () {
-    console.log("Listening on Port - " + PORT);
+  console.log("Listening on Port - " + PORT);
 });
